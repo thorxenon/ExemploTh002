@@ -17,9 +17,9 @@ public class HomeController {
     public String showHome(Model model){
         model.addAttribute("data", new Date());
         List<String> list = Arrays.asList(
-            "Financeiro", "Comercial", "Recursos Humanos"
+            "Fanantial", "Comercial", "Human Resources", "IT"
         );
-        model.addAttribute("departamentos", list);
+        model.addAttribute("departments", list);
         return "home_tl";
     }
 
