@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página inicial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 th:text="#{main.title}">Departamentos</h1>
+
+    <ul>
+        <li 
+            th:each="departmento : ${departamentos}"
+            th:text="${departmento}">Valor</li>
+    </ul>
+
+    <p>Página gerada em <span th:text="${data}">Valor</span></p>
+</body>
+</html>
