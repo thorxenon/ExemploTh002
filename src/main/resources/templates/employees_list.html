@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee List</title>
+    <link th:rel="stylesheet"   
+    th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+    <script   
+    th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}">
+    </script>
 </head>
 <body>
-    <h1>Employees</h1>
+    <div th:replace="~{menu :: header (pagina='employees')}"></div>
 
-    <a th:href="@{/employee/create}">New Employee</a>
+    <div class="container">
+        <h1>Employees</h1>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Matriculation</th>
-                <th>Name</th>
-                <th>Enroll Date</th>
-                <th>Department</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="employee: ${employees}">
-                <td th:text="${employee.matriculation}">Matriculation</td>
-                <td th:text="${employee.name}">Name</td>
+        <p>
+            <a class="btn btn-primary" th:href="@{/employee/create}">New Employee</a>
+        </p>
 
-                <td th:text="${#dates.format(employee.enrollDate,'dd/MM/YY')}">Enroll Date</td>
-                <td th:text="${employee.department.name}">Department</td>
+        <table border="1" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Matriculation</th>
+                    <th>Name</th>
+                    <th>Enroll Date</th>
+                    <th>Department</th>
+                </tr>
+            </thead>
+            <tbody class="all-but-first">
+                <tr th:each="employee: ${employees}">
+                    <td th:text="${employee.matriculation}">Matriculation</td>
+                    <td th:text="${employee.name}">Name</td>
 
-                <td>
-                    <a th:href="@{/employee/delete/{matriculation}(matriculation=${employee.matriculation})}">Delete</a>
-                    <a th:href="@{/employee/create/{matriculation}(matriculation=${employee.matriculation})}">Update</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td th:text="${#dates.format(employee.enrollDate,'dd/MM/YY')}">Enroll Date</td>
+                    <td th:text="${employee.department.name}">Department</td>
+
+                    <td class="col-sm-2">
+                        <a class="btn btn-danger btn-sm" th:href="@{/employee/delete/{matriculation}(matriculation=${employee.matriculation})}">Delete</a>
+                        <a class="btn btn-primary btn-sm" th:href="@{/employee/create/{matriculation}(matriculation=${employee.matriculation})}">Update</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:rel="stylesheet"   
+    th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+    <script   
+    th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}">
+    </script>
     <title>Create a new Employee</title>
 </head>
 <body>
-    <h1>New Employee's data</h1>
+    <div th:replace="~{menu :: header (pagina='employees')}"></div>
 
-     <form
-        th:object="${employee}"
-        th:action="@{/employees/create}"
-        method="post">
+    <div class="container">
         <p>
-            <label for="matriculation">Matriculation</label>
-            <input type="text" name="" id="matriculation" th:field="*{matriculation}">
+            <h1>New Employee's data</h1>
         </p>
 
-        <p>
-            <label for="name">Name</label>
-            <input type="text" name="" id="name" th:field="*{name}">
-        </p>
+        <form
+            th:object="${employee}"
+            th:action="@{/employees/create}"
+            method="post">
+            <div class="form-group">
+                <label class="form-label" for="matriculation">Matriculation</label>
+                <input class="form-control" type="text" name="" id="matriculation" th:field="*{matriculation}">
+            </div>
 
-        <p>
-            <label for="department">Department</label>
-            <select name="" id="department" th:field="*{department}">
-                <option
-                    th:each="department: ${departments}"
-                    th:value="${department.id}" th:text="${department.name}"></option>
-            </select>
-        </p>
-        <button type="submit">Create</button>
-     </form>
+            <div class="form-group">
+                <label class="form-label" for="name">Name</label>
+                <input class="form-control" type="text" name="" id="name" th:field="*{name}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="department">Department</label>
+                <select class="form-select" name="" id="department" th:field="*{department}">
+                    <option
+                        th:each="department: ${departments}"
+                        th:value="${department.id}" th:text="${department.name}"></option>
+                </select>
+            </div>
+            <br>
+            <button class="btn btn-primary" type="submit">Create</button>
+        </form>
+    </div>
 </body>
 </html>

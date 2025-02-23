@@ -1,35 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Departments</title>
+    <link th:rel="stylesheet"   
+    th:href="@{/webjars/bootstrap/5.0.2/css/bootstrap.min.css} "/>
+    <script   
+    th:src="@{/webjars/bootstrap/5.0.2/js/bootstrap.bundle.min.js}">
+    </script>
 </head>
 <body>
-    <h1>Departments</h1>
+    <div th:replace="~{menu :: header (pagina='departments')}">
+    </div>
 
+    <div class="container">
+        <h1>Departments</h1>
 
-    <a th:href="@{/department/create}">New Departments</a>
+        <p>
+            <a th:href="@{/department/create}" class="btn btn-primary">New Departments</a>
+        </p>
 
-    <table border="1">
-        <thead>
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Options</th>
-            </tr>
-        </thead>
-        <tbody th:remove="all-but-first">
-            <tr th:each="depart: ${departments}">
-                <td th:text="${depart.id}"></td>
-                <td th:text="${depart.name}"></td>
+        <table border="1" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody th:remove="all-but-first" class="all-but-first">
+                <tr th:each="depart: ${departments}">
+                    <td th:text="${depart.id}"></td>
+                    <td th:text="${depart.name}"></td>
 
-                <td>
-                    <a th:href="@{/department/delete/{id}(id=${depart.id})}">Excluir</a>
-                    <a th:href="@{/department/create/{id}(id=${depart.id})}">Alterar</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    <td class="col-sm-2">
+                        <a th:href="@{/department/delete/{id}(id=${depart.id})}" class="btn btn-danger btn-sm">Excluir</a>
+                        <a th:href="@{/department/create/{id}(id=${depart.id})}" class="btn btn-primary btn-sm">Alterar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

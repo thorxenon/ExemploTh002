@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
-    @GetMapping("/")    
+    @GetMapping("/old")    
     public String showHome(Model model){
         model.addAttribute("data", new Date());
         List<String> list = Arrays.asList(
@@ -24,4 +24,8 @@ public class HomeController {
     }
 
     
+    @GetMapping("/")
+    public String home(Model model){
+        return "home";
+    }
 }

@@ -1,3 +1,8 @@
+CREATE TABLE IF NOT EXISTS department (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS employee (
     matriculation VARCHAR(255) PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
@@ -7,10 +12,10 @@ CREATE TABLE IF NOT EXISTS employee (
 );
 
 -- Insert departments
-INSERT INTO department (id, name) VALUES (1, 'Fanantial');
-INSERT INTO department (id, name) VALUES (2, 'Comercial');
-INSERT INTO department (id, name) VALUES (3, 'Human Resources');
-INSERT INTO department (id, name) VALUES (4, 'IT');
+INSERT INTO department (id, name) VALUES (DEFAULT, 'Fanantial');
+INSERT INTO department (id, name) VALUES (DEFAULT, 'Comercial');
+INSERT INTO department (id, name) VALUES (DEFAULT, 'Human Resources');
+INSERT INTO department (id, name) VALUES (DEFAULT, 'IT');
 
 -- Insert employees
 INSERT INTO employee (matriculation, name, enroll_date, id) VALUES ('E001', 'John Doe', '2025-01-01', 1);

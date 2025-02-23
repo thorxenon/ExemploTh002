@@ -37,6 +37,4 @@ public class Department {
     public void setName(String name){
         this.name = name;
     }
-
-    
 }
