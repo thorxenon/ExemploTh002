@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a new Employee</title>
+</head>
+<body>
+    <h1>New Employee's data</h1>
+
+     <form
+        th:object="${employee}"
+        th:action="@{/employees/create}"
+        method="post">
+        <p>
+            <label for="matriculation">Matriculation</label>
+            <input type="text" name="" id="matriculation" th:field="*{matriculation}">
+        </p>
+
+        <p>
+            <label for="name">Name</label>
+            <input type="text" name="" id="name" th:field="*{name}">
+        </p>
+
+        <p>
+            <label for="department">Department</label>
+            <select name="" id="department" th:field="*{department}">
+                <option
+                    th:each="department: ${departments}"
+                    th:value="${department.id}" th:text="${department.name}"></option>
+            </select>
+        </p>
+        <button type="submit">Create</button>
+     </form>
+</body>
+</html>

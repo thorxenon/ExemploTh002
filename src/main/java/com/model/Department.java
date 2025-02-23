@@ -17,7 +17,7 @@ public class Department {
 
 
     @OneToMany(mappedBy="department")
-    private Set<Employee> employeers;
+    private Set<Employee> employees;
 
 
     public Department(){}
@@ -37,4 +37,6 @@ public class Department {
     public void setName(String name){
         this.name = name;
     }
+
+    
 }

@@ -24,23 +24,23 @@ public class DepartmentController {
         return "departments_list";
     }
 
-    @GetMapping("/departments/delete")
-    public String delete(Model model, Integer id){
+    @GetMapping("/department/delete/{id}")
+    public String delete(Model model, @PathVariable Integer id){
         repository.deleteById(id);
         model.addAttribute("departments", repository.findAll());
         return "departments_list";
     }
 
-    @GetMapping("/departments/create")
+    @GetMapping("/department/create")
     public String create(Model model){
-        model.addAttribute("departments", new Department());
+        model.addAttribute("department", new Department());
         return "departments_data";
     }
 
-    @GetMapping("/departments/create/{id}")
+    @GetMapping("/department/create/{id}")
     public String create(Model model, @PathVariable Integer id){
         Department depart = repository.findById(id).get();
-        model.addAttribute("departs", depart);
+        model.addAttribute("department", depart);
         return "departments_data";
     }
 

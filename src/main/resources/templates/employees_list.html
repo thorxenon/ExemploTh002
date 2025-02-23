@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employees</h1>
+
+    <a th:href="@{/employee/create}">New Employee</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Matriculation</th>
+                <th>Name</th>
+                <th>Enroll Date</th>
+                <th>Department</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee: ${employees}">
+                <td th:text="${employee.matriculation}">Matriculation</td>
+                <td th:text="${employee.name}">Name</td>
+
+                <td th:text="${#dates.format(employee.enrollDate,'dd/MM/YY')}">Enroll Date</td>
+                <td th:text="${employee.department.name}">Department</td>
+
+                <td>
+                    <a th:href="@{/employee/delete/{matriculation}(matriculation=${employee.matriculation})}">Delete</a>
+                    <a th:href="@{/employee/create/{matriculation}(matriculation=${employee.matriculation})}">Update</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

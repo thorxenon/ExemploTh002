@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+</head>
+<body>
+    <h1>Departments</h1>
+
+
+    <a th:href="@{/department/create}">New Departments</a>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody th:remove="all-but-first">
+            <tr th:each="depart: ${departments}">
+                <td th:text="${depart.id}"></td>
+                <td th:text="${depart.name}"></td>
+
+                <td>
+                    <a th:href="@{/department/delete/{id}(id=${depart.id})}">Excluir</a>
+                    <a th:href="@{/department/create/{id}(id=${depart.id})}">Alterar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

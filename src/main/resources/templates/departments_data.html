@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/style_data.css}">
+    <title>Departments</title>
+</head>
+<body>
+    <h1>Department Data</h1>
+
+    <form
+        th:object="${department}"
+        th:action="@{/departments/create}"
+        method="POST"
+    >   
+        <input id="id" type="hidden" th:field="*{id}">
+        <p>
+            <label for="name">Name</label>
+            <input id="name" type="text" th:field="*{name}">
+        </p>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
