@@ -23,6 +23,16 @@ public class HomeController {
         return "home_tl";
     }
 
+    @GetMapping("/login")
+    public String showLogin(Model model) {
+    return "login";
+    }
+        
+    @GetMapping("/logout")
+    public String showLogout(Model model) {
+    return "logout";
+    }
+
     
     @GetMapping("/")
     public String home(Model model){
